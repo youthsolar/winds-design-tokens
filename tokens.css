@@ -1,0 +1,78 @@
+/* ==========================================================================
+   Winds Portfolio · Unified Design Tokens (v1.0 — 2026-05-26)
+   Source: 2026-05-23 Portfolio 統一拍板（方案 B）
+   Usage: @import or copy into each sub-brand project
+   ========================================================================== */
+
+:root {
+  /* ── Paper & Ink ────────────────────────────────── */
+  --paper:        #FBF8F3;
+  --paper-2:      #F5F1E8;
+  --paper-3:      #EDE6D8;
+  --surface:      #FFFFFF;
+
+  --ink:          #2C2421;
+  --ink-2:        #5A5048;
+  --ink-3:        #8A7E6E;
+  --ink-4:        #B0A898;
+
+  --line:         #E8E0D2;
+  --line-strong:  #D4C8B8;
+
+  /* ── Accent (default = 找風問幸福 乾燥玫瑰) ──── */
+  --accent:       #C97D7D;
+  --accent-deep:  #A85F5F;
+  --accent-soft:  #F5E8E8;
+  --accent-wash:  #FDF5F5;
+
+  /* ── Semantic ───────────────────────────────────── */
+  --success:      #2D6A4F;
+  --success-bg:   #D4EDDA;
+  --error:        #C0392B;
+  --error-bg:     #FDECEA;
+
+  /* ── Typography ─────────────────────────────────── */
+  --font-serif:   "Noto Serif TC", "Songti TC", serif;
+  --font-sans:    "Noto Sans TC", "PingFang TC", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", "SF Mono", ui-monospace, monospace;
+
+  /* ── Radius ─────────────────────────────────────── */
+  --r-sm:   4px;
+  --r-md:   8px;
+  --r-lg:   16px;
+  --r-pill: 999px;
+
+  /* ── Shadows ────────────────────────────────────── */
+  --shadow-sm:   0 1px 2px rgba(44,36,33,.04), 0 1px 1px rgba(44,36,33,.03);
+  --shadow-md:   0 4px 14px rgba(44,36,33,.06), 0 2px 4px rgba(44,36,33,.04);
+  --shadow-lift: 0 14px 40px rgba(44,36,33,.08), 0 4px 12px rgba(44,36,33,.05);
+}
+
+/* ── Sub-brand accent overrides ──────────────────── */
+[data-brand="haowu"] {
+  --accent:      #8B9DAB;
+  --accent-deep: #6B7D8B;
+  --accent-soft: #E8EDF1;
+  --accent-wash: #F3F6F8;
+}
+
+[data-brand="haoai"] {
+  --accent:      #E8A5A5;
+  --accent-deep: #C88585;
+  --accent-soft: #FDF0F0;
+  --accent-wash: #FFF7F7;
+}
+
+[data-brand="haomei"] {
+  --accent:      #A8B895;
+  --accent-deep: #889875;
+  --accent-soft: #EFF3EB;
+  --accent-wash: #F7FAF5;
+}
+
+[data-brand="haoshi"] {
+  --accent:      #C7956B;
+  --accent-deep: #A7754B;
+  --accent-soft: #F5EDE3;
+  --accent-wash: #FBF6F0;
+}
