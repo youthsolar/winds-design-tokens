@@ -1,78 +1,180 @@
 /* ==========================================================================
-   Winds Portfolio · Unified Design Tokens (v1.0 — 2026-05-26)
-   Source: 2026-05-23 Portfolio 統一拍板（方案 B）
-   Usage: @import or copy into each sub-brand project
+   Winds Portfolio · Unified Design Tokens (v2.0 — 2026-06-09)
+   Source: 「找風問幸福 · 占卜站」Claude Design handoff（2026-06-09）
+           取代 v1.0（2026-05-23 方案 B 初版）。
+   決策: 2026-06-09 Jeffery 拍板「以 Handoff 為準 + 回頭更新母檔」。
+   Usage: @import or copy into each sub-brand project。
+   相容: 保留 v1.0 舊變數名（--paper / --ink / --accent / --r-* / --shadow-*），
+         指向新值，其他產品 repo 不會壞；視覺更新待各自 redeploy 時「跟進」。
    ========================================================================== */
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+
 :root {
-  /* ── Paper & Ink ────────────────────────────────── */
-  --paper:        #FBF8F3;
-  --paper-2:      #F5F1E8;
-  --paper-3:      #EDE6D8;
-  --surface:      #FFFFFF;
+  /* ── Rice / 暖中性（紙底、表面、分隔線）──────────── */
+  --rice-50:  #FBF8F3;   /* 全站底色 — 招牌米白 */
+  --rice-100: #F6EFE6;
+  --rice-200: #EEE4D6;   /* 柔分隔線、髮絲線 */
+  --rice-300: #E2D4C1;   /* 較強邊框 */
+  --rice-400: #CBB9A2;
+  --paper-card: #FFFDF8; /* 浮起卡片白，比純白暖一點 */
 
-  --ink:          #2C2421;
-  --ink-2:        #5A5048;
-  --ink-3:        #8A7E6E;
-  --ink-4:        #B0A898;
+  /* ── Dried rose 乾燥玫瑰（主強調色）─────────────── */
+  --rose-50:  #F8EAE5;
+  --rose-100: #F0DAD3;
+  --rose-200: #E3BDB5;
+  --rose-300: #D2A099;
+  --rose-400: #C18C84;   /* primary */
+  --rose-500: #AC7167;   /* hover / pressed */
+  --rose-600: #8F574E;   /* deep, tint 上文字 */
 
-  --line:         #E8E0D2;
-  --line-strong:  #D4C8B8;
+  /* ── Clay 陶土（次要暖色，落地感）──────────────── */
+  --clay-200: #EAD3BC;
+  --clay-300: #DDB48E;
+  --clay-400: #C99A78;
+  --clay-500: #AC7E5C;
 
-  /* ── Accent (default = 找風問幸福 乾燥玫瑰) ──── */
-  --accent:       #C97D7D;
-  --accent-deep:  #A85F5F;
-  --accent-soft:  #F5E8E8;
-  --accent-wash:  #FDF5F5;
+  /* ── Sage 鼠尾草（安定次色，淡綠）─────────────── */
+  --sage-200: #D3D8C5;
+  --sage-300: #B7BFA3;
+  --sage-400: #98A484;
+  --sage-500: #7A8866;
 
-  /* ── Semantic ───────────────────────────────────── */
-  --success:      #2D6A4F;
-  --success-bg:   #D4EDDA;
-  --error:        #C0392B;
-  --error-bg:     #FDECEA;
+  /* ── Antique gold 古金（克制奢華點綴）──────────── */
+  --gold-300: #D8C49A;
+  --gold-400: #C2A878;
+  --gold-500: #A88C5C;
+
+  /* ── Ink 暖近黑文字 ──────────────────────────── */
+  --ink-900: #2E2823;    /* 主要文字 */
+  --ink-700: #4A4038;
+  --ink-500: #6E6359;    /* 次要文字 */
+  --ink-400: #948A7E;    /* muted / placeholder */
+  --ink-300: #B8AEA2;
+
+  /* ── Functional（保持溫和，不刺眼）──────────────── */
+  --positive: #7A8866;   /* sage */
+  --caution:  #A88C5C;   /* gold */
+  --critical: #B5675C;   /* 暗鏽紅，非消防車紅 */
+
+  /* ===== Semantic aliases — 元件請引用這些 ===== */
+  --surface-page:    var(--rice-50);
+  --surface-card:    var(--paper-card);
+  --surface-sunken:  var(--rice-100);
+  --surface-tint:    var(--rose-50);
+  --surface-inverse: var(--ink-900);
+
+  --border-soft:   var(--rice-200);
+  --border-strong: var(--rice-300);
+  --border-accent: var(--rose-300);
+
+  --text-primary:   var(--ink-900);
+  --text-secondary: var(--ink-500);
+  --text-muted:     var(--ink-400);
+  --text-on-accent: #FFFDF8;
+  --text-on-inverse:#F6EFE6;
+
+  --accent:        var(--rose-400);
+  --accent-hover:  var(--rose-500);
+  --accent-press:  var(--rose-600);
+  --accent-tint:   var(--rose-100);
+  --accent-quiet:  var(--rose-50);
+
+  --focus-ring: rgba(193, 140, 132, 0.45); /* dried rose @ 45% */
 
   /* ── Typography ─────────────────────────────────── */
-  --font-serif:   "Noto Serif TC", "Songti TC", serif;
-  --font-sans:    "Noto Sans TC", "PingFang TC", system-ui, sans-serif;
-  --font-mono:    "JetBrains Mono", "SF Mono", ui-monospace, monospace;
+  --font-serif: "Noto Serif TC", "Songti TC", serif;
+  --font-sans:  "Noto Sans TC", system-ui, -apple-system, "PingFang TC", sans-serif;
 
-  /* ── Radius ─────────────────────────────────────── */
-  --r-sm:   4px;
-  --r-md:   8px;
-  --r-lg:   16px;
-  --r-pill: 999px;
+  --w-light: 300; --w-regular: 400; --w-medium: 500; --w-semibold: 600; --w-bold: 700; --w-black: 900;
 
-  /* ── Shadows ────────────────────────────────────── */
-  --shadow-sm:   0 1px 2px rgba(44,36,33,.04), 0 1px 1px rgba(44,36,33,.03);
-  --shadow-md:   0 4px 14px rgba(44,36,33,.06), 0 2px 4px rgba(44,36,33,.04);
-  --shadow-lift: 0 14px 40px rgba(44,36,33,.08), 0 4px 12px rgba(44,36,33,.05);
+  --t-display:  56px;
+  --t-h1:       40px;
+  --t-h2:       30px;
+  --t-h3:       24px;
+  --t-h4:       20px;
+  --t-body-lg:  18px;
+  --t-body:     16px;
+  --t-body-sm:  14px;
+  --t-caption:  13px;
+  --t-micro:    12px;
+
+  --lh-tight: 1.18; --lh-snug: 1.35; --lh-body: 1.85; --lh-ui: 1.5;
+  --ls-display: 0.01em; --ls-heading: 0.02em; --ls-body: 0.015em; --ls-label: 0.14em;
+
+  /* ── Spacing（4px base）──────────────────────────── */
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 20px;
+  --space-6: 24px; --space-8: 32px; --space-10: 40px; --space-12: 48px; --space-16: 64px;
+  --space-20: 80px; --space-24: 96px; --space-32: 128px;
+  --measure-prose: 38rem;
+  --container: 1120px;
+  --container-narrow: 720px;
+
+  /* ── Radius（圓潤）──────────────────────────────── */
+  --radius-xs:  6px;
+  --radius-sm:  10px;
+  --radius-md:  14px;
+  --radius-lg:  20px;
+  --radius-xl:  28px;
+  --radius-2xl: 36px;
+  --radius-pill: 999px;
+
+  /* ── Shadows（暖調，低不透明、擴散）────────────── */
+  --shadow-xs: 0 1px 2px rgba(70, 52, 40, 0.05);
+  --shadow-sm: 0 1px 2px rgba(70, 52, 40, 0.04), 0 2px 6px rgba(70, 52, 40, 0.05);
+  --shadow-md: 0 2px 6px rgba(70, 52, 40, 0.05), 0 8px 24px rgba(70, 52, 40, 0.07);
+  --shadow-lg: 0 6px 16px rgba(70, 52, 40, 0.06), 0 18px 48px rgba(70, 52, 40, 0.10);
+  --shadow-xl: 0 10px 28px rgba(70, 52, 40, 0.08), 0 28px 72px rgba(70, 52, 40, 0.14);
+  --shadow-glow: 0 0 0 6px var(--focus-ring);
+
+  /* ── Motion（平靜，無彈跳）──────────────────────── */
+  --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-fast: 140ms; --dur-base: 240ms; --dur-slow: 420ms;
+
+  /* ════════════════════════════════════════════════════
+     向後相容 — v1.0 舊變數名（其他 repo 仍引用，指向新值）
+     ════════════════════════════════════════════════════ */
+  --paper:       var(--rice-50);
+  --paper-2:     var(--rice-100);
+  --paper-3:     var(--rice-200);
+  --surface:     var(--paper-card);
+  --ink:         var(--ink-900);
+  --ink-2:       var(--ink-700);
+  --ink-3:       var(--ink-500);
+  --ink-4:       var(--ink-400);
+  --line:        var(--rice-200);
+  --line-strong: var(--rice-300);
+  --accent-deep: var(--rose-600);
+  --accent-soft: var(--rose-100);
+  --accent-wash: var(--rose-50);
+  --success:     #2D6A4F;
+  --success-bg:  #D4EDDA;
+  --error:       var(--critical);
+  --error-bg:    #FDECEA;
+  --font-mono:   "JetBrains Mono", "SF Mono", ui-monospace, monospace;
+  --r-sm:   var(--radius-xs);
+  --r-md:   var(--radius-sm);
+  --r-lg:   var(--radius-lg);
+  --r-pill: var(--radius-pill);
+  --shadow-lift: var(--shadow-lg);
 }
 
-/* ── Sub-brand accent overrides ──────────────────── */
-[data-brand="haowu"] {
-  --accent:      #8B9DAB;
-  --accent-deep: #6B7D8B;
-  --accent-soft: #E8EDF1;
-  --accent-wash: #F3F6F8;
+/* ── Sub-brand accent overrides（其他產品線，色相維持 v1.0）──
+   找風問幸福 = 預設 rose（已更新為 #C18C84）。
+   以下 sub-brand 待各自 redeploy 時對齊 Claude Design 新稿，暫維持原色相。 */
+[data-brand="haowu"] {   /* 找風問好窩 · 天青 */
+  --accent: #8B9DAB; --accent-hover: #7A8C9A; --accent-press: #6B7D8B;
+  --accent-tint: #E8EDF1; --accent-quiet: #F3F6F8;
 }
-
-[data-brand="haoai"] {
-  --accent:      #E8A5A5;
-  --accent-deep: #C88585;
-  --accent-soft: #FDF0F0;
-  --accent-wash: #FFF7F7;
+[data-brand="haoai"] {   /* 找風問好愛 · 珊瑚粉 */
+  --accent: #E8A5A5; --accent-hover: #D89595; --accent-press: #C88585;
+  --accent-tint: #FDF0F0; --accent-quiet: #FFF7F7;
 }
-
-[data-brand="haomei"] {
-  --accent:      #A8B895;
-  --accent-deep: #889875;
-  --accent-soft: #EFF3EB;
-  --accent-wash: #F7FAF5;
+[data-brand="haomei"] {  /* 找風問好美 · 薄茶綠 */
+  --accent: #A8B895; --accent-hover: #98A885; --accent-press: #889875;
+  --accent-tint: #EFF3EB; --accent-quiet: #F7FAF5;
 }
-
-[data-brand="haoshi"] {
-  --accent:      #C7956B;
-  --accent-deep: #A7754B;
-  --accent-soft: #F5EDE3;
-  --accent-wash: #FBF6F0;
+[data-brand="haoshi"] {  /* 找風問好食 · 薪褐 */
+  --accent: #C7956B; --accent-hover: #B7855B; --accent-press: #A7754B;
+  --accent-tint: #F5EDE3; --accent-quiet: #FBF6F0;
 }
