@@ -79,6 +79,9 @@
   --accent-press:  var(--rose-600);
   --accent-tint:   var(--rose-100);
   --accent-quiet:  var(--rose-50);
+  /* sage / gold 的 quiet 底（補齊；色相取自既有 sage-500 / gold-500 混招牌米白 rice-50，非自創色）*/
+  --positive-quiet: color-mix(in srgb, var(--sage-500) 12%, var(--rice-50));   /* ≈ #EFF3EB */
+  --caution-quiet:  color-mix(in srgb, var(--gold-500) 12%, var(--rice-50));   /* ≈ #F5EDE3 */
 
   --focus-ring: rgba(193, 140, 132, 0.45); /* dried rose @ 45% */
 
@@ -157,6 +160,82 @@
   --r-lg:   var(--radius-lg);
   --r-pill: var(--radius-pill);
   --shadow-lift: var(--shadow-lg);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   Dark theme（暖墨夜色）— 2026-07-15 補齊，使 DS 成為 light+dark 單一來源。
+   原則：★零自創色★。表面/tint 由既有色階經 color-mix 推導（暖墨/暖米同色相），
+   文字·邊框·強調直接對應既有色階步階。元件只引用 semantic/相容別名即自動跟隨。
+   觸發：系統深色（除非使用者切成 light）＋ [data-theme="dark"] 明確覆蓋。
+   ════════════════════════════════════════════════════════════════ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --surface-page:   color-mix(in srgb, var(--ink-900), #000 26%);
+    --surface-card:   color-mix(in srgb, var(--ink-900), #000 6%);
+    --surface-sunken: color-mix(in srgb, var(--ink-900), #000 16%);
+    --surface-tint:   color-mix(in srgb, var(--rose-400) 16%, var(--ink-900));
+    --surface-inverse: var(--rice-50);
+    --border-soft:   color-mix(in srgb, var(--ink-700), #000 12%);
+    --border-strong: var(--ink-700);
+    --border-accent: var(--rose-300);
+    --text-primary:   var(--rice-100);
+    --text-secondary: var(--ink-300);
+    --text-muted:     var(--ink-400);
+    --text-on-accent: var(--ink-900);
+    --text-on-inverse:var(--ink-900);
+    --accent:        var(--rose-300);
+    --accent-hover:  var(--rose-200);
+    --accent-press:  var(--rose-200);
+    --accent-tint:   color-mix(in srgb, var(--rose-400) 22%, var(--ink-900));
+    --accent-quiet:  color-mix(in srgb, var(--rose-400) 16%, var(--ink-900));
+    --positive:      var(--sage-400);
+    --caution:       var(--gold-400);
+    --critical:      color-mix(in srgb, var(--critical) 82%, #fff);
+    --positive-quiet: color-mix(in srgb, var(--sage-500) 16%, var(--ink-900));
+    --caution-quiet:  color-mix(in srgb, var(--gold-500) 16%, var(--ink-900));
+    --focus-ring: color-mix(in srgb, var(--rose-300) 45%, transparent);
+    /* v1 相容別名跟隨 dark */
+    --paper: var(--surface-page); --paper-2: var(--surface-sunken); --paper-3: var(--border-soft);
+    --surface: var(--surface-card);
+    --ink: var(--text-primary); --ink-2: var(--text-secondary); --ink-3: var(--text-muted);
+    --line: var(--border-soft); --line-strong: var(--border-strong);
+    --accent-deep: var(--rose-200);
+    --accent-soft: color-mix(in srgb, var(--rose-400) 22%, var(--ink-900));
+    --accent-wash: color-mix(in srgb, var(--rose-400) 16%, var(--ink-900));
+  }
+}
+:root[data-theme="dark"] {
+  --surface-page:   color-mix(in srgb, var(--ink-900), #000 26%);
+  --surface-card:   color-mix(in srgb, var(--ink-900), #000 6%);
+  --surface-sunken: color-mix(in srgb, var(--ink-900), #000 16%);
+  --surface-tint:   color-mix(in srgb, var(--rose-400) 16%, var(--ink-900));
+  --surface-inverse: var(--rice-50);
+  --border-soft:   color-mix(in srgb, var(--ink-700), #000 12%);
+  --border-strong: var(--ink-700);
+  --border-accent: var(--rose-300);
+  --text-primary:   var(--rice-100);
+  --text-secondary: var(--ink-300);
+  --text-muted:     var(--ink-400);
+  --text-on-accent: var(--ink-900);
+  --text-on-inverse:var(--ink-900);
+  --accent:        var(--rose-300);
+  --accent-hover:  var(--rose-200);
+  --accent-press:  var(--rose-200);
+  --accent-tint:   color-mix(in srgb, var(--rose-400) 22%, var(--ink-900));
+  --accent-quiet:  color-mix(in srgb, var(--rose-400) 16%, var(--ink-900));
+  --positive:      var(--sage-400);
+  --caution:       var(--gold-400);
+  --critical:      color-mix(in srgb, var(--critical) 82%, #fff);
+  --positive-quiet: color-mix(in srgb, var(--sage-500) 16%, var(--ink-900));
+  --caution-quiet:  color-mix(in srgb, var(--gold-500) 16%, var(--ink-900));
+  --focus-ring: color-mix(in srgb, var(--rose-300) 45%, transparent);
+  --paper: var(--surface-page); --paper-2: var(--surface-sunken); --paper-3: var(--border-soft);
+  --surface: var(--surface-card);
+  --ink: var(--text-primary); --ink-2: var(--text-secondary); --ink-3: var(--text-muted);
+  --line: var(--border-soft); --line-strong: var(--border-strong);
+  --accent-deep: var(--rose-200);
+  --accent-soft: color-mix(in srgb, var(--rose-400) 22%, var(--ink-900));
+  --accent-wash: color-mix(in srgb, var(--rose-400) 16%, var(--ink-900));
 }
 
 /* ── Sub-brand accent overrides（其他產品線，色相維持 v1.0）──
