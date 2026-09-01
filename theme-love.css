@@ -1,0 +1,72 @@
+/* ==========================================================================
+   Winds · 好愛主題「粉瓷／玫瑰夜」 (theme-love v1.0 — 2026-09-01)
+   決策: Jeffery 2026-09-01「依照現在問好愛的粉紅色，改新的明暗色」「要有明確的差異」。
+   基準色: 好愛站色 #C9798E（與找風問幸福 logo 墨玫瑰同族）。
+   設計: 亮版＝粉瓷（粉調瓷白底，明確比家族米白粉）；
+         暗版＝玫瑰夜（梅紫夜底＋亮粉 accent，明確不同於暖墨夜色棕底）。
+   Usage: 蓋在 Unified Tokens v2.0 之後載入；只覆寫語意層與 love 色階。
+   正本三處同步: 本檔（repo）＝DS 活檔 tokens/theme-love.css＝decision-worker ds.ts THEME_LOVE_CSS。
+   ========================================================================== */
+
+/* ── 好愛色階（love ramp，語法同 rose ramp）───────────── */
+/* 亮版 */
+:root {
+  --love-50:  #F9E7EC;
+  --love-100: #F4D6DE;
+  --love-200: #E9B9C6;
+  --love-300: #DA8DA3;
+  --love-400: #C9798E;   /* 好愛粉 — 基準 */
+  --love-500: #B36378;
+  --love-600: #9C4E63;
+
+  /* 語意層（粉瓷）*/
+  --surface-page:   #FBF4F6;
+  --surface-card:   #FFFDFE;
+  --surface-sunken: #F6E9ED;
+  --surface-tint:   #F9E7EC;
+  --border-soft:    #F0DDE3;
+  --border-strong:  #E3C8D0;
+  --border-accent:  var(--love-300);
+  --accent:         var(--love-400);
+  --accent-hover:   var(--love-500);
+  --accent-press:   var(--love-600);
+  --accent-tint:    var(--love-100);
+  --accent-quiet:   var(--love-50);
+  --focus-ring:     rgba(201, 121, 142, 0.45);
+  --bar-translucent: rgba(251, 244, 246, 0.82);
+  /* rose 相容位（元件層引用 rose-* 時吃 love 色）*/
+  --rose-50: var(--love-50); --rose-100: var(--love-100); --rose-200: var(--love-200);
+  --rose-300: var(--love-300); --rose-400: var(--love-400); --rose-500: var(--love-500); --rose-600: var(--love-600);
+}
+
+/* 暗版（玫瑰夜）— 底色離開暖墨棕、走梅紫夜 */
+[data-theme="dark"] {
+  --love-50:  #432935;
+  --love-100: #4E2F3C;
+  --love-200: #5C3F4C;
+  --love-300: #D1879C;
+  --love-400: #E39CB1;
+  --love-500: #ECB2C3;
+  --love-600: #F2C4D2;
+
+  --surface-page:   #241A1F;
+  --surface-card:   #342630;
+  --surface-sunken: #2C2026;
+  --surface-tint:   #3E2833;
+  --border-soft:    #3E2C35;
+  --border-strong:  #503943;
+  --border-accent:  var(--love-300);
+  --text-primary:   #F2E7EB;
+  --text-secondary: #BCA6AF;
+  --text-muted:     #94808A;
+  --text-on-accent: #2E1B23;
+  --accent:         var(--love-400);
+  --accent-hover:   var(--love-500);
+  --accent-press:   var(--love-600);
+  --accent-tint:    var(--love-100);
+  --accent-quiet:   var(--love-50);
+  --focus-ring:     rgba(227, 156, 177, 0.55);
+  --bar-translucent: rgba(36, 26, 31, 0.82);
+  --rose-50: var(--love-50); --rose-100: var(--love-100); --rose-200: var(--love-200);
+  --rose-300: var(--love-300); --rose-400: var(--love-400); --rose-500: var(--love-500); --rose-600: var(--love-600);
+}
